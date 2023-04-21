@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import "./assets/styles/index.scss";
 
 const client = new ApolloClient({
-  uri: "http://localhost:5005/api",
+  uri: "http://localhost:5005/graphql",
   cache: new InMemoryCache(),
 });
 
