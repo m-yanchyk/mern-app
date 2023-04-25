@@ -1,0 +1,22 @@
+.sidebar {
+  background-color: $black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 2rem;
+  max-width: 15rem;
+  width: 100%;
+}
+
+.sidebar-link {
+  padding: 0.25rem 0.5rem;
+  text-align: start;
+  margin-bottom: 0.25rem;
+  font-size: 1.125rem;
+  color: white;
+  text-decoration: none;
+  &.active {
+    color: aqua;
+  }
+}

@@ -1,0 +1,28 @@
+.content {
+  max-width: 100%;
+  width: 100%;
+  padding: 1rem;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.content-header__title {
+  font-weight: 600;
+}
+
+.content-header__button {
+  padding: 0.5rem 0.75rem;
+  border: 2px solid $black;
+  font-size: 0.875rem;
+  transition: 0.4s;
+}
+
+.content-header__button:hover {
+  background-color: $black;
+  color: $white;
+}

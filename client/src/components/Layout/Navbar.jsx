@@ -11,7 +11,7 @@ export default function Navbar() {
       <div className="wrapper">
         <div className="navbar">
           <Link to={links.main} className="navbar-logo">
-            шкарпетки
+            комікси
           </Link>
           <div className="navbar-links">
             {auth ? (

@@ -1,19 +1,16 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
-import { getProducts } from "../../utils/gql";
 import Spinner from "../../components/Layout/Spinner";
+import { useGetItemsQuery } from "../../store/rtkq";
 
 export default function Main() {
-  const { data, loading, error } = useQuery(getProducts);
-  console.log(data)
-  if (loading) return <Spinner />;
+  const { data, isFetching } = useGetItemsQuery({
+    type: "products",
+  });
+  if (isFetching) return <Spinner />;
   return (
     <div className="wrapper">
-      {data?.getProducts.map((product) => (
-        <div key={product.id}>
-          <img src={`http://localhost:5005/${product.path}`} />
-          <span>{product.name}</span>
-        </div>
+      {data.map((product) => (
+        <div key={product._id}>{product.name}</div>
       ))}
     </div>
   );

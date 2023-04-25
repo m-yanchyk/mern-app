@@ -1,39 +1,30 @@
-import { ApolloServer } from "apollo-server-express";
-import { connect } from "mongoose";
-import typeDefs from "./typeDefs/index.js";
-import resolvers from "./resolvers/resolvers.js";
-import express from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
-import graphqlUploadExpress from "graphql-upload/graphqlUploadExpress.mjs";
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const path = require("path");
 
-const DB_URL =
-  "mongodb+srv://Mykola:11october@cluster0.fbiyxaj.mongodb.net/?retryWrites=true&w=majority";
-const PORT = 5005;
+const app = express();
 
-async function startServer() {
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-  });
+app.use(express.json());
+app.use("/images", express.static(path.join(__dirname, "images")));
+app.use(cors());
 
-  await connect(DB_URL).then(() => console.log("MongoDB started!"));
-  await server.start();
-  const app = express();
+const PORT = process.env.PORT || 5010;
 
-  app.use(graphqlUploadExpress());
-  app.use("/images", express.static("images"));
-  app.use(express.json());
-  app.use(bodyParser.json());
-  server.applyMiddleware({ app });
+const ProductRoute = require("./routes/product");
 
-  app.use(cors());
+app.use("/", ProductRoute);
 
-  await new Promise((r) => app.listen({ port: PORT }, r));
-
-  console.log(
-    `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
-  );
+async function start() {
+  try {
+    await mongoose
+      .connect(process.env.DB_URL)
+      .then(console.log("DB started!"))
+      app.listen(PORT, () => console.log("Server started!"))
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-startServer();
+start();
