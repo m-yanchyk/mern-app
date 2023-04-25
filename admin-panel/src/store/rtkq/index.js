@@ -8,12 +8,27 @@ const commonApi = createApi({
   endpoints: (build) => ({
     getItems: build.query({
       query: ({ type }) => {
-        return type;
+        const config = {
+          url: type
+        }
+
+        return config;
       },
     }),
+    post: build.mutation({
+      query: ({type, data}) => {
+        const config = {
+          url: type,
+          method: "POST",
+          body: data,
+        }
+        console.log(config)
+        return config;
+      },
+    })
   }),
 });
 
-export const { useGetItemsQuery } = commonApi;
+export const { useGetItemsQuery, usePostMutation } = commonApi;
 
 export default commonApi;
