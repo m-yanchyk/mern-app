@@ -27,12 +27,13 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
+  padding: 0 0.25rem;
 }
 
 .modal-content__body {
-    max-height: 100%;
-    height: 100%;
-    overflow: auto;
+  max-height: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 @keyframes modal {

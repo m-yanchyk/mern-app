@@ -45,6 +45,10 @@ router.post("/api/product", upload.array("images", 10), async (req, res) => {
       publishing_house,
       year,
       language,
+      binding,
+      book_format,
+      page_numbers,
+      amount,
     } = req.body;
 
     const images = [];
@@ -61,6 +65,10 @@ router.post("/api/product", upload.array("images", 10), async (req, res) => {
       publishing_house,
       year,
       language,
+      binding,
+      book_format,
+      page_numbers,
+      amount,
       images,
     });
 

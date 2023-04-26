@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+* {
+  font-family: "Bitter", serif;
+}
+
 html {
   font-family: "Bitter", serif;
   font-size: 16px;
@@ -24,7 +28,6 @@ button {
   outline: none;
   border: none;
   background-color: $white;
-  font-family: "Bitter", serif;
   font-size: 0.875rem;
   cursor: pointer;
 }

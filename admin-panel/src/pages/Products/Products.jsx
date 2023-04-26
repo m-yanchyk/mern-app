@@ -13,8 +13,8 @@ export default function Products({ title }) {
     <>
       <div className="content-header">
         <div className="content-header__title">{title}</div>
-        <button className="content-header__button" onClick={handleOpen}>
-          Додати продукт
+        <button className="main-button" onClick={handleOpen}>
+          Додати новий продукт
         </button>
       </div>
       <List />

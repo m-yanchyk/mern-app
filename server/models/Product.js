@@ -8,6 +8,10 @@ const ProductSchema = new Schema({
   publishing_house: { type: String },
   year: { type: String },
   language: { type: String },
+  binding: {type: String},
+  book_format: {type: String},
+  page_numbers: {type: String},
+  amount: {type: Number},
   images: { type: Array },
 });
 

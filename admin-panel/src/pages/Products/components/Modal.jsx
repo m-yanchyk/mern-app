@@ -18,7 +18,7 @@ export default function Modal() {
     >
       <div className="modal-content">
         <div className="modal-content__header">
-          <span className="modal-content__header-title">Додати продукт</span>
+          <span className="modal-content__header-title">Додати новий продукт</span>
           <button className="button-img" onClick={handleClose}>
             <img src={CloseButton} alt="Close button" />
           </button>

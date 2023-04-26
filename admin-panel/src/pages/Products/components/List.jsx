@@ -1,14 +1,15 @@
 import React from "react";
 import { useGetItemsQuery } from "../../../store/rtkq";
 import Spinner from "../../../components/Layout/Spinner";
+import ProductCard from "./ProductCard";
 
 export default function List() {
   const { data, isFetching } = useGetItemsQuery({ type: "products" });
   if (isFetching) return <Spinner />;
   return (
-    <div>
+    <div className="product-list">
       {data.map((product) => (
-        <div key={product._id}>{product.name}</div>
+        <ProductCard product={product} key={product._id} />
       ))}
     </div>
   );

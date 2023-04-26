@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
+import { closeModalAction } from "../slices/common";
 
 const commonApi = createApi({
   reducerPath: "commonApi",
@@ -9,23 +10,30 @@ const commonApi = createApi({
     getItems: build.query({
       query: ({ type }) => {
         const config = {
-          url: type
-        }
+          url: type,
+        };
 
         return config;
       },
     }),
     post: build.mutation({
-      query: ({type, data}) => {
+      query: ({ type, data }) => {
         const config = {
           url: type,
           method: "POST",
           body: data,
-        }
-        console.log(config)
+        };
         return config;
       },
-    })
+      async onQueryStarted({ runSideEffects }, { dispatch }) {
+        try {
+          if (runSideEffects) runSideEffects();
+          dispatch(closeModalAction());
+        } catch (err) {
+          console.log(err);
+        }
+      },
+    }),
   }),
 });
 
